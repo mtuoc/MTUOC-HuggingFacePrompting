@@ -1,7 +1,7 @@
 # --- FILE AND DATA SETTINGS ---
 file_settings:
   input_filename: totranslate2.txt
-  output_filename: translated_hf2.txt
+  output_filename: translated.txt
   delimiter: '\t' 
 
 # --- HUGGING FACE SETTINGS ---
