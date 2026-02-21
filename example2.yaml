@@ -1,22 +1,29 @@
 # --- FILE AND DATA SETTINGS ---
 file_settings:
   input_filename: totranslate2.txt
-  output_filename: translated.txt
+  output_filename: translated2.txt
   delimiter: '\t' 
 
-# --- HUGGING FACE SETTINGS ---
+# --- MODEL CONFIGURATION ---
+# Hem canviat 'hf_settings' per 'model_settings' per coherència amb el motor
+model_settings:
+  name: "BSC-LT/salamandraTA-2b-instruct"
+  device: "cuda"
+  trust_remote_code: true
 
-hf_settings:
-  model: "BSC-LT/salamandraTA-2b-instruct"
-  temperature: 0.0 # Lower values are more deterministic. Note: 0.0 uses greedy search.
-  max_new_tokens: 128 # How many tokens to generate (similar to num_predict)
-  repeat_penalty: 1.2 # Penalty for repeating tokens
-  top_k: 40 # Limits vocabulary to top K choices
-  top_p: 0.9 # Nucleus sampling
-  # --- Noves opcions configurables ---
-  stop_sequences: ["\n", "###"] # El model s'aturarà en trobar qualsevol d'aquests
-  use_eos_token: true            # Forçar l'ús del token de final de frase oficial
-
+# --- LLM GENERATION PARAMETERS ---
+generation_params:
+  max_new_tokens: 128
+  temperature: 0.0          # 0.0 uses greedy search (deterministic)
+  repetition_penalty: 1.2
+  top_k: 40
+  top_p: 0.9
+  stop_sequences: ["\\n", "###"]
+  use_eos_token: true            
+  
+# --- LLM PROMPT AND RESPONSE PARSING ---
+prompt_settings:
+  json_key: "None"
 
 # --- LLM PROMPT AND RESPONSE PARSING ---
 prompt_settings:
